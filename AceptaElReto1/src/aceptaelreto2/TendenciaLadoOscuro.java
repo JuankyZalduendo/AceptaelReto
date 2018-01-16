@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author juasan
+ * @author juan
  */
 public class TendenciaLadoOscuro {
 
@@ -19,17 +19,17 @@ public class TendenciaLadoOscuro {
     public static void main(String[] args) {
         Scanner b=new Scanner(System.in);
         int dato=b.nextInt();
-        String numeros[]=new String[dato+1];
-     /*   
-        for(int i=0;i<=dato;i++)
+        String guardar[]=new String[dato+1];
+        
+        for(int i=0;i<dato;i++)
         {
-            numeros[i]=b.nextLine();
+            int temp=b.nextInt();
+            String base5=base(temp, 5);
+            guardar[i]=base5;
             
+           // System.out.println(base5);
         }
-     */ 
-            
-            String base5=base(dato, 5);//test
-            System.out.println(base5);
+        
         
     }
     static String base(int num, int b) //convertir a base 5
