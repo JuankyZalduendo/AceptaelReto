@@ -15,79 +15,53 @@ public class Aceptaelreto2 {
         Scanner sc=new Scanner(System.in);
         
         
-        //while(sc.hasNext()){
+        while(sc.hasNext()){
             contador=0;
-            System.out.println("temp:fila");
+            int mayor=0;
             int fila=sc.nextInt();
-            System.out.println("temp:col");
+            
             int col=sc.nextInt();
-
-
+            
             char datos[][]=new char[fila][col];
             sc.nextLine();
             for(int i=0;i<fila;i++)
-            {
-                //for(int a=0;a<col;a++)
-                //{
-                    System.out.println("f:"+i);
-                    datos[i]=sc.nextLine().toCharArray();
-
-
-
-                //}
-
-
+            {                                
+                    
+                    datos[i]=sc.nextLine().toCharArray();               
             }
-
-            for(int i=0;i<fila;i++)
-            {
-                System.out.println("");
-                //for(int a=0;a<col;a++)
-                //{
-                    System.out.print(datos[i]);                                                          
-                //}  
-            }
-            
-            /*for(int i=0;i<fila;i++)
-            {
-                
-                for(int a=0;a<col;a++)
-                {*/
-                    System.out.println("res:"+parcelas(datos,fila-1,col-1));                                                          
-                //}  
-            //}
-    
-        //}
-    
+                                 
+            System.out.println();
+            for(int i=0;i<fila-1;i++)
+                for(int j=0;j<col;j++)
+                {
+                    int temp=parcelas(datos,i,j);
+                    if(temp>=mayor)
+                        mayor=temp;                                      
+                }
+            System.out.println(mayor);
+        }
     }
     static int parcelas(char[][] a,int fila, int col)
     {
-         System.out.println();
-        char temp;System.out.print(fila);System.out.print(col);
-        System.out.println();
-        if(fila>=0)
+      
+        int tamaño=0;
+        if(fila<0||col<0||fila>=a.length||col>=a[0].length)
+            return 0;
+        
+        if(a[fila][col]==' ')
+            return 0;
+        
+        if(a[fila][col]=='#')
         {
-            
-            temp=a[fila][col];
-            if(temp=='#')
-                contador++;
-                
-            return parcelas(a,fila-1,col);
-            
-        }
-       
-        else if(col>=0 && fila==0)
-        {
-                        
-            temp=a[fila][col];
-            if(temp=='#')
-                contador++;
-                
-            return parcelas(a,fila,col-1);
-        }
-            
-        else
-            return contador;
+            a[fila][col]=' ';
+            tamaño++;
+            tamaño+=parcelas(a,fila+1,col);
+            tamaño+=parcelas(a,fila,col+1);
+            tamaño+=parcelas(a,fila-1,col);
+            tamaño+=parcelas(a,fila,col-1);
+            return tamaño;           
+        }      
+        return 0;  
     }
     
 }
