@@ -12,33 +12,28 @@ public class Aceptaelreto2 {
 
     static int contador=0;
     public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
-        
-        
+        Scanner sc=new Scanner(System.in);           
         while(sc.hasNext()){
             contador=0;
             int mayor=0;
-            int fila=sc.nextInt();
-            
-            int col=sc.nextInt();
-            
+            int fila=sc.nextInt();          
+            int col=sc.nextInt();          
             char datos[][]=new char[fila][col];
             sc.nextLine();
             for(int i=0;i<fila;i++)
-            {                                
-                    
+            {                                      
                     datos[i]=sc.nextLine().toCharArray();               
             }
                                  
-            System.out.println();
-            for(int i=0;i<fila-1;i++)
+            
+            for(int i=0;i<fila;i++)
                 for(int j=0;j<col;j++)
                 {
                     int temp=parcelas(datos,i,j);
                     if(temp>=mayor)
                         mayor=temp;                                      
                 }
-            System.out.println(mayor);
+            System.out.print(mayor+"\n");
         }
     }
     static int parcelas(char[][] a,int fila, int col)
